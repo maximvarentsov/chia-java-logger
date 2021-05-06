@@ -1,0 +1,23 @@
+{
+  "mongo": {
+    "connection": "mongodb://rs0-0.gatchina.pw:27017,rs0-1.gatchina.pw:27017,rs0-2.gatchina.pw:27017/chia?&replicaSet=rs0"
+  },
+  "hosts": {
+    "fullNode": "https://srv-02.gatchina.pw:8555/",
+    "wallet": "https://srv-02.gatchina.pw:9256/",
+    "harvesters": [
+      "https://srv-02.gatchina.pw:8560/",
+      "https://srv-03.gatchina.pw:8560/",
+      "https://srv-04.gatchina.pw:8560/",
+      "https://srv-05.gatchina.pw:8560/",
+      "https://srv-06.gatchina.pw:8560/",
+      "https://srv-07.gatchina.pw:8560/",
+      "https://srv-08.gatchina.pw:8560/"
+    ]
+  },
+  "cron": {
+    "blockchain": "*/5 * * * *",
+    "walletBalance": "0 * * * *",
+    "plots": "*/30 * * * *"
+  }
+}
