@@ -13,8 +13,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Main {
-    private static final Logger logger = LoggerFactory.getLogger(Main.class);
+public class TestMain {
+    private static final Logger logger = LoggerFactory.getLogger(TestMain.class);
 
     public static void main(String... args) throws IOException  {
         final var config = ConfigHelper.saveAndLoad("config.json", JsonConfig.class);
@@ -52,7 +52,7 @@ public class Main {
             var filter = Filters.eq("plotSeed", plot.plotSeed);
             replaceOnePlots.add(new ReplaceOneModel<>(filter, plot, new ReplaceOptions().upsert(true)));
         }
-        var bulkWriteResult = mongoCollectionPlots.bulkWrite(replaceOnePlots, new BulkWriteOptions().ordered(false));
+        //var bulkWriteResult = mongoCollectionPlots.bulkWrite(replaceOnePlots, new BulkWriteOptions().ordered(false));
 
         var chanceToWin = Utils.chanceToWin(totalPlotSize, networkSpace);
         logger.info("wallet balance {} XCH", walletBalance.walletBalance.confirmedWalletBalance);
