@@ -24,9 +24,7 @@ public class MongoDatabaseManager implements Closeable {
     private final MongoDatabase mongoDatabase;
 
     public MongoDatabaseManager(final @NotNull String connection) {
-        var connectionString = new ConnectionString(
-                "mongodb://rs0-0.gatchina.pw:27017,rs0-1.gatchina.pw:27017,rs0-2.gatchina.pw:27017/chia?&replicaSet=rs0"
-        );
+        var connectionString = new ConnectionString(connection);
 
         var settings = MongoClientSettings.builder()
                 .codecRegistry(pojoCodecRegistry)
