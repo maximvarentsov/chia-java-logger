@@ -19,13 +19,16 @@ public class TestMain {
     public static void main(String... args) throws IOException  {
         final var config = ConfigHelper.saveAndLoad("config.json", JsonConfig.class);
 
-        var mongo = new MongoDatabaseManager(config.mongo.connection);
+        //var mongo = new MongoDatabaseManager(config.mongo.connection);
 
         var walletBalance = ApiClient.getWalletBalance(config.hosts.wallet, 1);
-
+/*
         var mongoCollectionPlots = mongo.getCollection("plots", GetPlots.Plot.class);
-        mongoCollectionPlots.createIndex(Indexes.ascending("plotSeed"), new IndexOptions().background(true).unique(true));
-
+        mongoCollectionPlots.createIndex(
+                Indexes.ascending("plotSeed"),
+                new IndexOptions().background(true).unique(true)
+        );
+*/
         var blockChainState = ApiClient.getBlockchainState(config.hosts.fullNode);
         var networkSpace = blockChainState.blockchainState.space;
         //logger.info(new GsonBuilder().setPrettyPrinting().create().toJson(blockChainState));
@@ -47,7 +50,6 @@ public class TestMain {
         logger.info("total plots size: {}", Utils.humanReadableByteCountBin(totalPlotSize));
 
         var replaceOnePlots = new ArrayList<ReplaceOneModel<GetPlots.Plot>>(allPlots.size());
-
         for (var plot : allPlots) {
             var filter = Filters.eq("plotSeed", plot.plotSeed);
             replaceOnePlots.add(new ReplaceOneModel<>(filter, plot, new ReplaceOptions().upsert(true)));
