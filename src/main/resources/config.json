@@ -1,6 +1,6 @@
 {
   "mongo": {
-    "connection": "mongodb://rs0-0.gatchina.pw:27017,rs0-1.gatchina.pw:27017,rs0-2.gatchina.pw:27017/chia?&replicaSet=rs0"
+    "connection": "mongodb+srv://rs0.mongodb.gatchina.pw/chia?replicaSet=rs0&ssl=false"
   },
   "hosts": {
     "fullNode": "https://srv-02.gatchina.pw:8555/",
