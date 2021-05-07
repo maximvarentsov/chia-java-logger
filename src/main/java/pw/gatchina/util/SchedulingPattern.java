@@ -426,7 +426,7 @@ public class SchedulingPattern {
      * @param millis   The timestamp, as a UNIX-era millis value.
      * @return true if the given timestamp matches the pattern.
      */
-    public boolean match(final @NotNull TimeZone timezone, final @NotNull long millis) {
+    public boolean match(final @NotNull TimeZone timezone, final long millis) {
         GregorianCalendar gc = new GregorianCalendar(timezone);
         gc.setTimeInMillis(millis);
         gc.set(Calendar.SECOND, 0);
