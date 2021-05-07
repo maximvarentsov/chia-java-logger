@@ -7,11 +7,16 @@ import pw.gatchina.chia.tasks.UpdatePlots;
 import pw.gatchina.chia.tasks.UpdateWalletBalance;
 import pw.gatchina.util.ConfigHelper;
 import pw.gatchina.util.CronScheduler;
+import pw.gatchina.util.StaticShutdownCallbackRegistry;
 
 import java.io.IOException;
 
 public class Main {
     private static final Logger logger = LoggerFactory.getLogger(Main.class);
+
+    static {
+        System.setProperty("log4j.shutdownCallbackRegistry", StaticShutdownCallbackRegistry.class.getCanonicalName());
+    }
 
     public static void main(final String... args) throws IOException {
         final var config = ConfigHelper.saveAndLoad("config.json", JsonConfig.class);
