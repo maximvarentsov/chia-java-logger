@@ -19,5 +19,8 @@
     "blockchain": "*/5 * * * *",
     "walletBalance": "0 * * * *",
     "plots": "*/30 * * * *"
+  },
+  "wallet": {
+    "id": 1
   }
 }

@@ -7,6 +7,7 @@ public class JsonConfig {
     public Mongo mongo;
     public Hosts hosts;
     public Cron cron;
+    public Wallet wallet;
 
     public static class Mongo {
         public String connection;
@@ -22,5 +23,9 @@ public class JsonConfig {
         public String blockchain;
         public String walletBalance;
         public String plots;
+    }
+
+    public static class Wallet {
+        public int id;
     }
 }

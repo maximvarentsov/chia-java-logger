@@ -21,7 +21,7 @@ public class TestMain {
 /*
         var mongo = new MongoDatabaseManager(config.mongo.connection);
 */
-        var walletBalance = ApiClient.getWalletBalance(config.hosts.wallet, 1);
+        var walletBalance = ApiClient.getWalletBalance(config.hosts.wallet, config.wallet.id);
 /*
         var mongoCollectionPlots = mongo.getCollection("plots", GetPlots.Plot.class);
         mongoCollectionPlots.createIndex(

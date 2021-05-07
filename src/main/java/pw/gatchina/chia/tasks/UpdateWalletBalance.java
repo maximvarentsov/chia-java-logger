@@ -25,7 +25,7 @@ public class UpdateWalletBalance implements Runnable {
 
     @Override
     public void run() {
-        final var walletId = 1;
+        final var walletId = config.wallet.id;
         final var response = ApiClient.getWalletBalance(config.hosts.wallet, walletId);
 
         if (!response.success) {
