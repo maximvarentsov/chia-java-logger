@@ -21,5 +21,10 @@ public class Main {
         cronScheduler.start(config.cron.blockchain, new UpdateBlockchain(mongo, config));
         cronScheduler.start(config.cron.walletBalance, new UpdateWalletBalance(mongo, config));
         cronScheduler.start(config.cron.plots, new UpdatePlots(mongo, config));
+
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            cronScheduler.shutdown();
+            mongo.close();
+        }));
     }
 }

@@ -11,7 +11,6 @@ import org.bson.codecs.pojo.PojoCodecProvider;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.Closeable;
-import java.io.IOException;
 
 import static org.bson.codecs.configuration.CodecRegistries.fromProviders;
 import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
@@ -55,7 +54,7 @@ public class MongoDatabaseManager implements Closeable {
     }
 
     @Override
-    public void close() throws IOException {
+    public void close() {
         mongoClient.close();
     }
 }
