@@ -23,6 +23,7 @@ public class JsonConfig {
         public String blockchain;
         public String walletBalance;
         public String plots;
+        public String statistics;
     }
 
     public static class Wallet {

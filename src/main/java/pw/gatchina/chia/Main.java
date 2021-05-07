@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pw.gatchina.chia.tasks.UpdateBlockchain;
 import pw.gatchina.chia.tasks.UpdatePlots;
+import pw.gatchina.chia.tasks.UpdateStatistics;
 import pw.gatchina.chia.tasks.UpdateWalletBalance;
 import pw.gatchina.util.ConfigHelper;
 import pw.gatchina.util.CronScheduler;
@@ -26,6 +27,7 @@ public class Main {
         cronScheduler.start(config.cron.blockchain, new UpdateBlockchain(mongo, config));
         cronScheduler.start(config.cron.walletBalance, new UpdateWalletBalance(mongo, config));
         cronScheduler.start(config.cron.plots, new UpdatePlots(mongo, config));
+        cronScheduler.start(config.cron.statistics, new UpdateStatistics(mongo, config));
 
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             cronScheduler.shutdown();

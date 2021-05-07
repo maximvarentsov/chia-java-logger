@@ -18,7 +18,8 @@
   "cron": {
     "blockchain": "*/5 * * * *",
     "walletBalance": "0 * * * *",
-    "plots": "*/30 * * * *"
+    "plots": "*/30 * * * *",
+    "statistics": "*/15 * * * *"
   },
   "wallet": {
     "id": 1

@@ -1,6 +1,5 @@
 package pw.gatchina.chia.test;
 
-import com.mongodb.client.model.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pw.gatchina.chia.*;
@@ -9,7 +8,6 @@ import pw.gatchina.util.ConfigHelper;
 import pw.gatchina.util.Utils;
 
 import java.io.IOException;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -72,12 +70,5 @@ public class TestMain {
             plotSet.add(plot.plotSeed);
         }
 */
-
-        var statisticsHourly = new StatisticsHourly();
-        statisticsHourly.chanceToWin = chanceToWin;
-        statisticsHourly.datetime = LocalDateTime.now();
-        statisticsHourly.plotsCount = allPlots.size();
-        statisticsHourly.plotsCountSize = totalPlotSize;
-        statisticsHourly.networkSize = networkSpace;
     }
 }

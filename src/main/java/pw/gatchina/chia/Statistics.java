@@ -2,7 +2,7 @@ package pw.gatchina.chia;
 
 import java.time.LocalDateTime;
 
-public class StatisticsHourly {
+public class Statistics {
     public int plotsCount;
     public long plotsCountSize;
     public LocalDateTime datetime;
