@@ -1,4 +1,4 @@
-package pw.gatchina.chia;
+package pw.gatchina.util;
 
 import okhttp3.OkHttpClient;
 import org.jetbrains.annotations.NotNull;
