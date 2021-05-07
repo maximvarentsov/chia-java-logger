@@ -18,9 +18,9 @@ public class TestMain {
 
     public static void main(String... args) throws IOException  {
         final var config = ConfigHelper.saveAndLoad("config.json", JsonConfig.class);
-
-        //var mongo = new MongoDatabaseManager(config.mongo.connection);
-
+/*
+        var mongo = new MongoDatabaseManager(config.mongo.connection);
+*/
         var walletBalance = ApiClient.getWalletBalance(config.hosts.wallet, 1);
 /*
         var mongoCollectionPlots = mongo.getCollection("plots", GetPlots.Plot.class);
@@ -48,14 +48,14 @@ public class TestMain {
         logger.info("total plots: {}", allPlots.size());
         var totalPlotSize = allPlots.stream().mapToLong(e -> e.fileSize).sum();
         logger.info("total plots size: {}", Utils.humanReadableByteCountBin(totalPlotSize));
-
+/*
         var replaceOnePlots = new ArrayList<ReplaceOneModel<GetPlots.Plot>>(allPlots.size());
         for (var plot : allPlots) {
             var filter = Filters.eq("plotSeed", plot.plotSeed);
             replaceOnePlots.add(new ReplaceOneModel<>(filter, plot, new ReplaceOptions().upsert(true)));
         }
-        //var bulkWriteResult = mongoCollectionPlots.bulkWrite(replaceOnePlots, new BulkWriteOptions().ordered(false));
-
+        var bulkWriteResult = mongoCollectionPlots.bulkWrite(replaceOnePlots, new BulkWriteOptions().ordered(false));
+*/
         var chanceToWin = Utils.chanceToWin(totalPlotSize, networkSpace);
         logger.info("wallet balance {} XCH", walletBalance.walletBalance.confirmedWalletBalance);
         logger.info("network size {}", Utils.humanReadableByteCountBin(networkSpace));
@@ -63,7 +63,7 @@ public class TestMain {
         logger.info("XCH per week: {}", chanceToWin * 7);
         logger.info("XCH per month: {}", chanceToWin * 30);
 
-        /*
+ /*
         var plotSet = new HashSet<String>();
         for (var plot : allPlots) {
             if (plotSet.contains(plot.plotSeed)) {
@@ -71,7 +71,7 @@ public class TestMain {
             }
             plotSet.add(plot.plotSeed);
         }
-        */
+*/
 
         var statisticsHourly = new StatisticsHourly();
         statisticsHourly.chanceToWin = chanceToWin;
@@ -79,6 +79,5 @@ public class TestMain {
         statisticsHourly.plotsCount = allPlots.size();
         statisticsHourly.plotsCountSize = totalPlotSize;
         statisticsHourly.networkSize = networkSpace;
-
     }
 }
