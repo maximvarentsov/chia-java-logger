@@ -32,7 +32,7 @@ public class UpdatePlots implements Runnable {
                 final var plots = Arrays.asList(response.plots);
                 allPlots.addAll(plots);
             } else {
-                logger.error("harvester {} responce not success", host);
+                logger.error("harvester {} response not success", host);
             }
         }
 
