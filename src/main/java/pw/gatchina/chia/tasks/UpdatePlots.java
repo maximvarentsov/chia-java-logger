@@ -56,8 +56,7 @@ public class UpdatePlots implements Runnable {
         }
 
         final var bulkWriteResult = collection.bulkWrite(replaceOnePlots, new BulkWriteOptions().ordered(false));
-        final var affectedDocuments = bulkWriteResult.getInsertedCount() + bulkWriteResult.getModifiedCount();
 
-        logger.info("Update plots statistics success changed {} documents.", affectedDocuments);
+        logger.info("Update plots statistics success changed {} documents.", bulkWriteResult.getInsertedCount());
     }
 }
