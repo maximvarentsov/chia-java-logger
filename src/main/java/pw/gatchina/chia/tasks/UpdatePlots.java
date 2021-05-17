@@ -16,7 +16,6 @@ public class UpdatePlots implements Runnable {
     private final MongoDatabaseManager mongo;
     private final JsonConfig config;
 
-
     public UpdatePlots(final @NotNull MongoDatabaseManager mongo, final @NotNull JsonConfig config) {
         this.mongo = mongo;
         this.config = config;
