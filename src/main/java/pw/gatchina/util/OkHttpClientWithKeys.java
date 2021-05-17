@@ -23,7 +23,7 @@ import java.util.Base64;
 public class OkHttpClientWithKeys {
     public static String keyStorePassword = System.getProperty("keyStorePassword", "changeit");
 
-    public static OkHttpClient create(@NotNull final String rootCa, @NotNull final String privateKey, @NotNull final String privateCrt) {
+    public static OkHttpClient create(final @NotNull String rootCa, final @NotNull String privateKey, final @NotNull String privateCrt) {
         try (var trustedCertificateAsInputStream = Files.newInputStream(Paths.get(rootCa), StandardOpenOption.READ)) {
             var certificateFactory = CertificateFactory.getInstance("X.509");
             var trustedCertificate = certificateFactory.generateCertificate(trustedCertificateAsInputStream);
@@ -68,7 +68,7 @@ public class OkHttpClientWithKeys {
         }
     }
 
-    public static KeyStore createEmptyKeyStore(char[] keyStorePassword)  {
+    public static KeyStore createEmptyKeyStore(final char[] keyStorePassword)  {
         try {
             var keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
             keyStore.load(null, keyStorePassword);

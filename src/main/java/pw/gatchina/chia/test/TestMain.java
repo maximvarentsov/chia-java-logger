@@ -19,7 +19,7 @@ public class TestMain {
 /*
         var mongo = new MongoDatabaseManager(config.mongo.connection);
 */
-        var walletBalance = ApiClient.getWalletBalance(config.hosts.wallet, config.wallet.id);
+        final var walletBalance = ApiClient.getWalletBalance(config.hosts.wallet, config.wallet.id);
 /*
         var mongoCollectionPlots = mongo.getCollection("plots", GetPlots.Plot.class);
         mongoCollectionPlots.createIndex(
@@ -27,24 +27,24 @@ public class TestMain {
                 new IndexOptions().background(true).unique(true)
         );
 */
-        var blockChainState = ApiClient.getBlockchainState(config.hosts.fullNode);
-        var networkSpace = blockChainState.blockchainState.space;
+        final var blockChainState = ApiClient.getBlockchainState(config.hosts.fullNode);
+        final var networkSpace = blockChainState.blockchainState.space;
         //logger.info(new GsonBuilder().setPrettyPrinting().create().toJson(blockChainState));
 
-        var allPlots = new ArrayList<GetPlots.Plot>();
+        final var allPlots = new ArrayList<GetPlots.Plot>();
         logger.info("List of harvesters:");
-        for (var host : config.hosts.harvesters) {
-            var response = ApiClient.getPlots(host);
-            var plots= Arrays.asList(response.plots);
+        for (final var host : config.hosts.harvesters) {
+            final var response = ApiClient.getPlots(host);
+            final var plots= Arrays.asList(response.plots);
             logger.info("host: {}", host);
             logger.info("plots: {}", response.plots.length);
-            var totalPlotSize = plots.stream().mapToLong(e -> e.fileSize).sum();
+            final var totalPlotSize = plots.stream().mapToLong(e -> e.fileSize).sum();
             logger.info("plots size: {}", Utils.humanReadableByteCountBin(totalPlotSize));
             allPlots.addAll(plots);
         }
         logger.info("--------");
         logger.info("total plots: {}", allPlots.size());
-        var totalPlotSize = allPlots.stream().mapToLong(e -> e.fileSize).sum();
+        final var totalPlotSize = allPlots.stream().mapToLong(e -> e.fileSize).sum();
         logger.info("total plots size: {}", Utils.humanReadableByteCountBin(totalPlotSize));
 /*
         var replaceOnePlots = new ArrayList<ReplaceOneModel<GetPlots.Plot>>(allPlots.size());
@@ -54,16 +54,16 @@ public class TestMain {
         }
         var bulkWriteResult = mongoCollectionPlots.bulkWrite(replaceOnePlots, new BulkWriteOptions().ordered(false));
 */
-        var chanceToWin = Utils.chanceToWin(totalPlotSize, networkSpace);
+        final var chanceToWin = Utils.chanceToWin(totalPlotSize, networkSpace);
         logger.info("wallet balance {} XCH", walletBalance.walletBalance.confirmedWalletBalance);
         logger.info("network size {}", Utils.humanReadableByteCountBin(networkSpace));
         logger.info("XCH per day: {}", chanceToWin);
         logger.info("XCH per week: {}", chanceToWin * 7);
         logger.info("XCH per month: {}", chanceToWin * 30);
 
- /*
+/*
         var plotSet = new HashSet<String>();
-        for (var plot : allPlots) {
+        for (final var plot : allPlots) {
             if (plotSet.contains(plot.plotSeed)) {
                 logger.info("duplicate plot " + plot.filename);
             }

@@ -23,9 +23,9 @@ public class MongoDatabaseManager implements Closeable {
     private final MongoDatabase mongoDatabase;
 
     public MongoDatabaseManager(final @NotNull String connection) {
-        var connectionString = new ConnectionString(connection);
+        final var connectionString = new ConnectionString(connection);
 
-        var settings = MongoClientSettings.builder()
+        final var settings = MongoClientSettings.builder()
                 .codecRegistry(pojoCodecRegistry)
                 .applyConnectionString(connectionString)
                 .applicationName("chia-java-logger")
@@ -33,7 +33,7 @@ public class MongoDatabaseManager implements Closeable {
 
         mongoClient = MongoClients.create(settings);
 
-        var databaseName = connectionString.getDatabase();
+        final var databaseName = connectionString.getDatabase();
         if (databaseName == null) {
             throw new IllegalArgumentException("MongoDB database name not set.");
         }
@@ -49,7 +49,7 @@ public class MongoDatabaseManager implements Closeable {
         return mongoDatabase;
     }
 
-    public <TDocument> MongoCollection<TDocument> getCollection(final @NotNull String collection, @NotNull final Class<TDocument> type) {
+    public <TDocument> MongoCollection<TDocument> getCollection(final @NotNull String collection, final @NotNull Class<TDocument> type) {
         return mongoDatabase.getCollection(collection, type);
     }
 

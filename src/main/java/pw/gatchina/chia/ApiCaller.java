@@ -18,16 +18,16 @@ public class ApiCaller {
     private final String privateKey;
     private final String privateCrt;
 
-    public ApiCaller(@NotNull final String rootCa, @NotNull final String privateKey, @NotNull final String privateCrt) {
+    public ApiCaller(final @NotNull String rootCa, final @NotNull String privateKey, final @NotNull String privateCrt) {
         this.rootCa = rootCa;
         this.privateKey = privateKey;
         this.privateCrt = privateCrt;
     }
 
-    public <T> T call(@NotNull final Class<T> type, @NotNull final String url) {
+    public <T> T call(final @NotNull Class<T> type, final @NotNull String url) {
         return call(type, url, Map.of());
     }
-    public <T> T call(@NotNull final Class<T> type, @NotNull final String url, @NotNull final Map<?, ?> params) {
+    public <T> T call(final @NotNull Class<T> type, final @NotNull String url, final @NotNull Map<?, ?> params) {
         var jsonParams = GSON.toJson(params);
         var request = new Request.Builder()
                 .url(url)

@@ -19,7 +19,6 @@ import org.apache.logging.log4j.status.StatusLogger;
  * @see org.apache.logging.log4j.core.util.DefaultShutdownCallbackRegistry
  */
 public class StaticShutdownCallbackRegistry implements ShutdownCallbackRegistry, LifeCycle, Runnable, Serializable {
-
     private static final long serialVersionUID = 1L;
     protected static final Logger LOGGER = StatusLogger.getLogger();
 

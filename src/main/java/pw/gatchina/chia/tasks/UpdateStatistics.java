@@ -50,7 +50,7 @@ public class UpdateStatistics implements Runnable {
         final var totalPlotSize = allPlots.stream().mapToLong(e -> e.fileSize).sum();
         final var chanceToWin = Utils.chanceToWin(totalPlotSize, networkSpace);
 
-        var statistics = new Statistics();
+        final var statistics = new Statistics();
         statistics.chanceToWin = chanceToWin;
         statistics.datetime = LocalDateTime.now();
         statistics.plotsCount = allPlots.size();

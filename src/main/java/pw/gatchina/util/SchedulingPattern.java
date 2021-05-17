@@ -732,7 +732,7 @@ public class SchedulingPattern {
         }
 
         @Override
-        public int parse(@NotNull String value) throws Exception {
+        public int parse(final @NotNull String value) throws Exception {
             try {
                 // try as a simple value
                 return super.parse(value);
@@ -855,18 +855,18 @@ public class SchedulingPattern {
          *                 its parameter will be one of this list or the
          *                 last-day-of-month setting applies.
          */
-        public DayOfMonthValueMatcher(List<Integer> integers) {
+        public DayOfMonthValueMatcher(final @NotNull List<Integer> integers) {
             super(integers);
         }
         /**
          * Returns true if the given value is included in the matcher list or the
          * last-day-of-month setting applies.
          */
-        public boolean match(int value, int month, boolean isLeapYear) {
+        public boolean match(final int value, final int month, final boolean isLeapYear) {
             return (super.match(value) || (value > 27 && match(32) && isLastDayOfMonth(value, month, isLeapYear)));
         }
 
-        public static int getLastDayOfMonth(int month, boolean isLeapYear) {
+        public static int getLastDayOfMonth(final int month, final boolean isLeapYear) {
             if (isLeapYear && month == 2) {
                 return 29;
             } else {
@@ -874,7 +874,7 @@ public class SchedulingPattern {
             }
         }
 
-        public static boolean isLastDayOfMonth(int value, int month, boolean isLeapYear) {
+        public static boolean isLastDayOfMonth(final int value, final int month, final boolean isLeapYear) {
             return value == getLastDayOfMonth(month, isLeapYear);
         }
     }
