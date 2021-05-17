@@ -19,8 +19,8 @@ public final class ConfigHelper {
     public static Path save(final @NotNull String src, final @NotNull String folderDir) throws IOException {
         lock.lock();
         try {
-            var configDir = Paths.get(".", folderDir);
-            var file = configDir.resolve(src);
+            final var configDir = Paths.get(".", folderDir);
+            final var file = configDir.resolve(src);
             if (Files.notExists(file)) {
                 Files.createDirectories(file.getParent());
                 try (var is = ConfigHelper.class.getResourceAsStream("/" + src)) {
@@ -34,7 +34,7 @@ public final class ConfigHelper {
     }
 
     public static InputStream saveAndLoad(final @NotNull String path, final @NotNull String folderDir) throws IOException {
-        var save = save(path, folderDir);
+        final var save = save(path, folderDir);
         return new ByteArrayInputStream(Files.readAllBytes(save));
     }
 
@@ -43,7 +43,7 @@ public final class ConfigHelper {
     }
 
     public static <T> T saveAndLoad(final @NotNull String config, final @NotNull String folderDir, final @NotNull Class<T> type) throws IOException {
-        var stream = saveAndLoad(config, folderDir);
+        final var stream = saveAndLoad(config, folderDir);
         return GSON.fromJson(new BufferedReader(new InputStreamReader(stream, StandardCharsets.UTF_8)), type);
     }
 }

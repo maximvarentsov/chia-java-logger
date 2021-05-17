@@ -27,18 +27,19 @@ public class ApiCaller {
     public <T> T call(final @NotNull Class<T> type, final @NotNull String url) {
         return call(type, url, Map.of());
     }
+
     public <T> T call(final @NotNull Class<T> type, final @NotNull String url, final @NotNull Map<?, ?> params) {
-        var jsonParams = GSON.toJson(params);
-        var request = new Request.Builder()
+        final var jsonParams = GSON.toJson(params);
+        final var request = new Request.Builder()
                 .url(url)
                 .post(RequestBody.create(jsonParams, JSOM_MEDIA_TYPE))
                 .addHeader("Content-Type", "application/json")
                 .build();
-        var client = OkHttpClientWithKeys.create(rootCa, privateKey, privateCrt);
-        var call = client.newCall(request);
+        final var client = OkHttpClientWithKeys.create(rootCa, privateKey, privateCrt);
+        final var call = client.newCall(request);
         try {
-            var response = call.execute();
-            var body = response.body().string();
+            final var response = call.execute();
+            final var body = response.body().string();
             //System.out.println(body);
             return GSON.fromJson(body, type);
         } catch (IOException e) {

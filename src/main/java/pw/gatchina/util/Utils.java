@@ -16,13 +16,13 @@ public class Utils {
      * @return Formatted byte size to human readable format
      */
     public static String humanReadableByteCountBin(final long bytes) {
-        var absB = bytes == Long.MIN_VALUE ? Long.MAX_VALUE : Math.abs(bytes);
+        final var absB = bytes == Long.MIN_VALUE ? Long.MAX_VALUE : Math.abs(bytes);
         if (absB < 1024) {
             return bytes + " B";
         }
         var value = absB;
-        var ci = new StringCharacterIterator("KMGTPE");
-        for (int i = 40; i >= 0 && absB > 0xfffccccccccccccL >> i; i -= 10) {
+        final var ci = new StringCharacterIterator("KMGTPE");
+        for (var i = 40; i >= 0 && absB > 0xfffccccccccccccL >> i; i -= 10) {
             value >>= 10;
             ci.next();
         }
@@ -39,8 +39,8 @@ public class Utils {
      * @return chance to win
      */
     public static double chanceToWin(final long totalPlotSize, final long networkSpace) {
-        var chancePerDay = 4608;
-        var coinsPerBlock = 2;
+        final var chancePerDay = 4608;
+        final var coinsPerBlock = 2;
         return Utils.toPetabytes(totalPlotSize) / Utils.toPetabytes(networkSpace) * chancePerDay * coinsPerBlock;
     }
 }
