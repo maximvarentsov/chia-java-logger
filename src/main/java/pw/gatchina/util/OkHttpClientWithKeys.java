@@ -21,13 +21,13 @@ import java.security.spec.PKCS8EncodedKeySpec;
 import java.util.Base64;
 
 public class OkHttpClientWithKeys {
-    public static String keyStorePassword = System.getProperty("keyStorePassword", "changeit");
+    public static char[] keyStorePassword = System.getProperty("keyStorePassword", "changeit").toCharArray();
 
     public static OkHttpClient create(final @NotNull String rootCa, final @NotNull String privateKey, final @NotNull String privateCrt) {
         try (var trustedCertificateAsInputStream = Files.newInputStream(Paths.get(rootCa), StandardOpenOption.READ)) {
             var certificateFactory = CertificateFactory.getInstance("X.509");
             var trustedCertificate = certificateFactory.generateCertificate(trustedCertificateAsInputStream);
-            var trustStore = createEmptyKeyStore(keyStorePassword.toCharArray());
+            var trustStore = createEmptyKeyStore(keyStorePassword);
             trustStore.setCertificateEntry("server-certificate", trustedCertificate);
 
             var privateKeyContent = Files.readString(Paths.get(privateKey), Charset.defaultCharset())
@@ -42,15 +42,15 @@ public class OkHttpClientWithKeys {
             try (var certificateChainAsInputStream = Files.newInputStream(Paths.get(privateCrt), StandardOpenOption.READ)) {
                 var certificateChain = certificateFactory.generateCertificate(certificateChainAsInputStream);
 
-                var identityStore = createEmptyKeyStore(keyStorePassword.toCharArray());
-                identityStore.setKeyEntry("client", keyFactory.generatePrivate(keySpec), keyStorePassword.toCharArray(), new Certificate[]{ certificateChain });
+                var identityStore = createEmptyKeyStore(keyStorePassword);
+                identityStore.setKeyEntry("client", keyFactory.generatePrivate(keySpec), keyStorePassword, new Certificate[]{ certificateChain });
 
                 var trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
                 trustManagerFactory.init(trustStore);
                 var trustManagers = trustManagerFactory.getTrustManagers();
 
                 var keyManagerFactory = KeyManagerFactory.getInstance(KeyManagerFactory.getDefaultAlgorithm());
-                keyManagerFactory.init(identityStore, keyStorePassword.toCharArray());
+                keyManagerFactory.init(identityStore, keyStorePassword);
                 var keyManagers = keyManagerFactory.getKeyManagers();
 
                 var sslContext = SSLContext.getInstance("TLS");
