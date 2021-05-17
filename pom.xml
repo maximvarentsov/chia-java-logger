@@ -14,8 +14,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
-        <log4j2.version>2.8.2</log4j2.version>
-        <slf4j.version>1.7.25</slf4j.version>
+        <log4j2.version>2.14.1</log4j2.version>
+        <slf4j.version>1.7.30</slf4j.version>
         <gson.version>2.8.6</gson.version>
         <mongodb-driver-sync.version>4.2.3</mongodb-driver-sync.version>
         <okhttp.version>4.9.1</okhttp.version>
