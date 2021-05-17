@@ -54,7 +54,7 @@ public class OkHttpClientWithKeys {
                 var keyManagers = keyManagerFactory.getKeyManagers();
 
                 var sslContext = SSLContext.getInstance("TLS");
-                sslContext.init(keyManagers, trustManagers, null);
+                sslContext.init(keyManagers, trustManagers, new SecureRandom());
 
                 var sslSocketFactory = sslContext.getSocketFactory();
 
