@@ -23,7 +23,7 @@ public class Main {
         final var config = ConfigHelper.saveAndLoad("config.json", JsonConfig.class);
         final var mongo = new MongoDatabaseManager(config.mongo.connection);
 
-        final var cronScheduler = new CronScheduler(3);
+        final var cronScheduler = new CronScheduler(4);
         cronScheduler.start(config.cron.blockchain, new UpdateBlockchain(mongo, config));
         cronScheduler.start(config.cron.walletBalance, new UpdateWalletBalance(mongo, config));
         cronScheduler.start(config.cron.plots, new UpdatePlots(mongo, config));
