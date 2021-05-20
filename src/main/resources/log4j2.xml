@@ -29,6 +29,8 @@
         <Logger name="org.mongodb.driver.protocol.getmore" level="ERROR"/>
         <Logger name="org.mongodb.driver.protocol.killcursor" level="ERROR"/>
         <Logger name="org.mongodb.driver.protocol.command" level="ERROR"/>
+        <Logger name="org.mongodb.driver.uri" level="ERROR"/>
+        <Logger name="org.mongodb.driver.management" level="ERROR"/>
         <Root level="info">
             <AppenderRef ref="File"/>
             <AppenderRef ref="Error" level="error"/>
