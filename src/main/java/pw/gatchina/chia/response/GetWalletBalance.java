@@ -2,6 +2,8 @@ package pw.gatchina.chia.response;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.math.BigDecimal;
+
 public class GetWalletBalance {
     public boolean success;
 
@@ -10,19 +12,19 @@ public class GetWalletBalance {
 
     public static class WalletBalance {
         @SerializedName("confirmed_wallet_balance")
-        public int confirmedWalletBalance;
+        public long confirmedWalletBalance;
 
         @SerializedName("max_send_amount")
-        public int maxSendAmount;
+        public long maxSendAmount;
 
         @SerializedName("pending_change")
-        public int pendingChange;
+        public long pendingChange;
 
         @SerializedName("spendable_balance")
-        public int spendableBalance;
+        public long spendableBalance;
 
         @SerializedName("unconfirmed_wallet_balance")
-        public int unconfirmedWalletBalance;
+        public long unconfirmedWalletBalance;
 
         @SerializedName("wallet_id")
         public int walletId;

@@ -43,4 +43,14 @@ public class Utils {
         final var coinsPerBlock = 2;
         return Utils.toPetabytes(totalPlotSize) / Utils.toPetabytes(networkSpace) * chancePerDay * coinsPerBlock;
     }
+
+   /**
+    * The rest of the codebase uses mojos everywhere. Only uses these units for user facing interfaces
+    * 1 chia (XCH) is 1,000,000,000,000 mojo (1 Trillion)
+    *
+    * https://github.com/Chia-Network/chia-blockchain/blob/9cc908678b1255c9a520c322302ba35084676e08/chia/cmds/units.py#L6
+    */
+    public static double mojoToChia(long mojo) {
+        return mojo / Math.pow(10, 12);
+    }
 }

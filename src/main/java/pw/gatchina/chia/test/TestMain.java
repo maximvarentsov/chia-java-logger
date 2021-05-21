@@ -55,7 +55,7 @@ public class TestMain {
         var bulkWriteResult = mongoCollectionPlots.bulkWrite(replaceOnePlots, new BulkWriteOptions().ordered(false));
 */
         final var chanceToWin = Utils.chanceToWin(totalPlotSize, networkSpace);
-        logger.info("wallet balance {} XCH", walletBalance.walletBalance.confirmedWalletBalance);
+        logger.info("wallet balance {} XCH", Utils.mojoToChia(walletBalance.walletBalance.confirmedWalletBalance));
         logger.info("network size {}", Utils.humanReadableByteCountBin(networkSpace));
         logger.info("XCH per day: {}", chanceToWin);
         logger.info("XCH per week: {}", chanceToWin * 7);
