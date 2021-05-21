@@ -20,6 +20,7 @@
         <mongodb-driver-sync.version>4.2.3</mongodb-driver-sync.version>
         <okhttp.version>4.9.1</okhttp.version>
         <annotations.version>20.1.0</annotations.version>
+        <mainClass>pw.gatchina.chia.Main</mainClass>
     </properties>
 
     <build>
@@ -44,7 +45,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>pw.gatchina.chia.Main</mainClass>
+                            <mainClass>${mainClass}</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -65,6 +66,15 @@
                                     <include>*</include>
                                 </includes>
                             </artifactSet>
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                    <mainClass>${mainClass}</mainClass>
+                                    <manifestEntries>
+                                        <Multi-Release>true</Multi-Release>
+                                    </manifestEntries>
+                                </transformer>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                            </transformers>
                         </configuration>
                     </execution>
                 </executions>
