@@ -2,8 +2,6 @@ package pw.gatchina.chia.response;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.math.BigDecimal;
-
 public class GetWalletBalance {
     public boolean success;
 
