@@ -2,6 +2,7 @@ package pw.gatchina.chia.response;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.math.BigInteger;
 import java.util.List;
 
 public class GetBlockchainState {
@@ -135,7 +136,7 @@ public class GetBlockchainState {
 
         public Peak peak;
 
-        public long space;
+        public BigInteger space;
 
         @SerializedName("sub_slot_iters")
         public long subSlotIters;

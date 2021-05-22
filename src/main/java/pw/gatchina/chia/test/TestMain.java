@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pw.gatchina.chia.*;
 import pw.gatchina.chia.response.GetPlots;
+import pw.gatchina.util.Bytes;
 import pw.gatchina.util.ConfigHelper;
 import pw.gatchina.util.Utils;
 
@@ -39,13 +40,14 @@ public class TestMain {
             logger.info("host: {}", host);
             logger.info("plots: {}", response.plots.length);
             final var totalPlotSize = plots.stream().mapToLong(e -> e.fileSize).sum();
-            logger.info("plots size: {}", Utils.humanReadableByteCountBin(totalPlotSize));
+            logger.info("plots size: {}", Bytes.friendly(totalPlotSize));
             allPlots.addAll(plots);
         }
+
         logger.info("--------");
         logger.info("total plots: {}", allPlots.size());
         final var totalPlotSize = allPlots.stream().mapToLong(e -> e.fileSize).sum();
-        logger.info("total plots size: {}", Utils.humanReadableByteCountBin(totalPlotSize));
+        logger.info("total plots size: {}", Bytes.friendly(totalPlotSize));
 /*
         var replaceOnePlots = new ArrayList<ReplaceOneModel<GetPlots.Plot>>(allPlots.size());
         for (var plot : allPlots) {
@@ -56,7 +58,7 @@ public class TestMain {
 */
         final var chanceToWin = Utils.chanceToWin(totalPlotSize, networkSpace);
         logger.info("wallet balance {} XCH", Utils.mojoToChia(walletBalance.walletBalance.confirmedWalletBalance));
-        logger.info("network size {}", Utils.humanReadableByteCountBin(networkSpace));
+        logger.info("network size {}", Bytes.friendly(Bytes.B, networkSpace));
         logger.info("XCH per day: {}", chanceToWin);
         logger.info("XCH per week: {}", chanceToWin * 7);
         logger.info("XCH per month: {}", chanceToWin * 30);

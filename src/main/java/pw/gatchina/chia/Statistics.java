@@ -1,5 +1,6 @@
 package pw.gatchina.chia;
 
+import java.math.BigInteger;
 import java.time.LocalDateTime;
 
 public class Statistics {
@@ -7,5 +8,5 @@ public class Statistics {
     public long plotsCountSize;
     public LocalDateTime datetime;
     public double chanceToWin;
-    public long networkSize;
+    public BigInteger networkSize;
 }
