@@ -65,5 +65,7 @@ public class UpdateStatistics implements Runnable {
         );
 
         collection.insertOne(statistics);
+
+        logger.info("Update statistics success.");
     }
 }
