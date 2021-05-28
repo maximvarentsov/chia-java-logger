@@ -9,16 +9,18 @@ import com.mongodb.client.MongoDatabase;
 import org.bson.codecs.configuration.CodecRegistry;
 import org.bson.codecs.pojo.PojoCodecProvider;
 import org.jetbrains.annotations.NotNull;
+import pw.gatchina.util.BigIntegerCodec;
 
 import java.io.Closeable;
 
-import static org.bson.codecs.configuration.CodecRegistries.fromProviders;
-import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
+import static org.bson.codecs.configuration.CodecRegistries.*;
 
 public class MongoDatabaseManager implements Closeable {
-    private final static CodecRegistry pojoCodecRegistry =
-            fromRegistries(MongoClientSettings.getDefaultCodecRegistry(),
-            fromProviders(PojoCodecProvider.builder().automatic(true).build()));
+    private final static CodecRegistry pojoCodecRegistry = fromRegistries(
+        MongoClientSettings.getDefaultCodecRegistry(),
+        fromCodecs(new BigIntegerCodec()),
+        fromProviders(PojoCodecProvider.builder().automatic(true).build())
+    );
     private final MongoClient mongoClient;
     private final MongoDatabase mongoDatabase;
 
