@@ -19,14 +19,17 @@ public final class BigIntegerCodec implements Codec<BigInteger> {
     public BigIntegerCodec() {
     }
 
-    public void encode(BsonWriter writer, BigInteger value, EncoderContext encoderContext) {
+    @Override
+    public void encode(final BsonWriter writer, final BigInteger value, final EncoderContext encoderContext) {
         writer.writeDecimal128(new Decimal128(new BigDecimal(value)));
     }
 
-    public BigInteger decode(BsonReader reader, DecoderContext decoderContext) {
+    @Override
+    public BigInteger decode(final BsonReader reader, final DecoderContext decoderContext) {
         return reader.readDecimal128().bigDecimalValue().toBigInteger();
     }
 
+    @Override
     public Class<BigInteger> getEncoderClass() {
         return BigInteger.class;
     }
