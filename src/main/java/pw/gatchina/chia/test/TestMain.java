@@ -11,6 +11,7 @@ import pw.gatchina.util.Utils;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
 
 public class TestMain {
     private static final Logger logger = LoggerFactory.getLogger(TestMain.class);
@@ -63,7 +64,7 @@ public class TestMain {
         logger.info("XCH per week: {}", chanceToWin * 7);
         logger.info("XCH per month: {}", chanceToWin * 30);
 
-/*
+
         var plotSet = new HashSet<String>();
         for (final var plot : allPlots) {
             if (plotSet.contains(plot.plotSeed)) {
@@ -71,6 +72,5 @@ public class TestMain {
             }
             plotSet.add(plot.plotSeed);
         }
-*/
     }
 }
