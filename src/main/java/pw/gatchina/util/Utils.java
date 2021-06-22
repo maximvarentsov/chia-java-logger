@@ -10,8 +10,8 @@ public class Utils {
         return bytes / Math.pow(1024, 5);
     }
 
-    public static double toPetabytes(final BigInteger bytes) {
-        return bytes.divide(BigInteger.valueOf(1024).pow(5)).longValue();
+    public static double toPetabytes(final @NotNull BigInteger bytes) {
+        return bytes.divide(BigInteger.valueOf(1024).pow(5)).doubleValue();
     }
 
     /**
