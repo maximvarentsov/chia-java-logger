@@ -6,6 +6,7 @@ import org.bson.codecs.Codec;
 import org.bson.codecs.DecoderContext;
 import org.bson.codecs.EncoderContext;
 import org.bson.types.Decimal128;
+import org.jetbrains.annotations.NotNull;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -20,12 +21,12 @@ public final class BigIntegerCodec implements Codec<BigInteger> {
     }
 
     @Override
-    public void encode(final BsonWriter writer, final BigInteger value, final EncoderContext encoderContext) {
+    public void encode(final @NotNull BsonWriter writer, final @NotNull BigInteger value, final @NotNull EncoderContext encoderContext) {
         writer.writeDecimal128(new Decimal128(new BigDecimal(value)));
     }
 
     @Override
-    public BigInteger decode(final BsonReader reader, final DecoderContext decoderContext) {
+    public BigInteger decode(final @NotNull BsonReader reader, final @NotNull DecoderContext decoderContext) {
         return reader.readDecimal128().bigDecimalValue().toBigInteger();
     }
 
