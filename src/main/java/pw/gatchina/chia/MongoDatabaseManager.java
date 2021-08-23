@@ -51,6 +51,23 @@ public class MongoDatabaseManager implements Closeable {
         return mongoDatabase;
     }
 
+    public boolean collectionExists(final @NotNull String name) {
+        for (final var collection : getDatabase().listCollectionNames()) {
+            if (name.equalsIgnoreCase(collection)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean collectionNotExists(final @NotNull String name) {
+        return ! collectionExists(name);
+    }
+
+    public void dropCollection(final @NotNull String name) {
+        mongoDatabase.getCollection(name).drop();
+    }
+
     public <TDocument> MongoCollection<TDocument> getCollection(final @NotNull String collection, final @NotNull Class<TDocument> type) {
         return mongoDatabase.getCollection(collection, type);
     }
