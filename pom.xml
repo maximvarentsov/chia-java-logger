@@ -26,22 +26,22 @@
     <build>
         <defaultGoal>clean package</defaultGoal>
         <plugins>
+            <!-- https://maven.apache.org/plugins/maven-compiler-plugin/ -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.8.1</version>
                 <configuration>
-                    <source>11</source>
-                    <target>11</target>
                     <showDeprecation>true</showDeprecation>
                     <showWarnings>true</showWarnings>
                     <fork>true</fork>
                 </configuration>
             </plugin>
+            <!-- https://maven.apache.org/plugins/maven-jar-plugin/ -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>2.5</version>
+                <version>3.2.0</version>
                 <configuration>
                     <archive>
                         <manifest>
@@ -50,10 +50,11 @@
                     </archive>
                 </configuration>
             </plugin>
+            <!-- https://maven.apache.org/plugins/maven-shade-plugin/ -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>2.2</version>
+                <version>3.2.4</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
