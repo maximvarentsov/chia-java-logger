@@ -39,9 +39,11 @@ public class ApiCaller {
         final var call = client.newCall(request);
         try {
             final var response = call.execute();
-            final var body = response.body().string();
-            //System.out.println(body);
-            return GSON.fromJson(body, type);
+            final var body = response.body();
+            if (body == null) {
+                throw new RuntimeException("response body null");
+            }
+            return GSON.fromJson(body.string(), type);
         } catch (IOException e) {
             throw new RuntimeException(e.getMessage(), e);
         }
