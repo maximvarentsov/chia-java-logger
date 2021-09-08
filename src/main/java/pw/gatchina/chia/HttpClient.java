@@ -12,24 +12,24 @@ import pw.gatchina.util.OkHttpClientWithKeys;
 import java.io.IOException;
 import java.util.Map;
 
-public class ApiCaller {
+public class HttpClient {
     private final static Gson GSON = GsonUtil.get();
     private final static MediaType JSOM_MEDIA_TYPE = MediaType.get("application/json; charset=utf-8");
     private final OkHttpClient client;
 
-    public ApiCaller(final @NotNull String rootCa, final @NotNull String privateKey, final @NotNull String privateCrt) {
+    public HttpClient(final @NotNull String rootCa, final @NotNull String privateKey, final @NotNull String privateCrt) {
         client = OkHttpClientWithKeys.create(rootCa, privateKey, privateCrt);
     }
 
-    public <T> T callSync(final @NotNull Class<T> type, final @NotNull String url) {
-        return callSync(type, url, Map.of());
+    public <T> T postSync(final @NotNull Class<T> type, final @NotNull String url) {
+        return postSync(type, url, Map.of());
     }
 
-    public <T> T callSync(final @NotNull Class<T> type, final @NotNull String url, final @NotNull Map<?, ?> params) {
-        final var jsonParams = GSON.toJson(params);
+    public <T> T postSync(final @NotNull Class<T> type, final @NotNull String url, final @NotNull Map<?, ?> map) {
+        final var jsonMap = GSON.toJson(map);
         final var request = new Request.Builder()
                 .url(url)
-                .post(RequestBody.create(jsonParams, JSOM_MEDIA_TYPE))
+                .post(RequestBody.create(jsonMap, JSOM_MEDIA_TYPE))
                 .addHeader("Content-Type", "application/json")
                 .build();
         final var call = client.newCall(request);
@@ -37,7 +37,7 @@ public class ApiCaller {
             final var response = call.execute();
             final var body = response.body();
             if (body == null) {
-                throw new RuntimeException("response body null");
+                throw new RuntimeException("response body is null");
             }
             return GSON.fromJson(body.string(), type);
         } catch (IOException e) {
