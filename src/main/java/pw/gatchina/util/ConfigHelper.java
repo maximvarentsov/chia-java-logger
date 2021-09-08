@@ -1,7 +1,6 @@
 package pw.gatchina.util;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.*;
@@ -13,7 +12,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public final class ConfigHelper {
     private final static ReentrantLock lock = new ReentrantLock();
-    private final static Gson GSON = new GsonBuilder().create();
+    private final static Gson GSON = GsonUtil.get();
     public static String DEFAULT_CONFIG_DIR = "config";
 
     public static Path save(final @NotNull String src, final @NotNull String folderDir) throws IOException {

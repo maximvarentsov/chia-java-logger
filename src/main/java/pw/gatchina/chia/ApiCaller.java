@@ -1,24 +1,24 @@
 package pw.gatchina.chia;
 
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import org.jetbrains.annotations.NotNull;
+import pw.gatchina.util.GsonUtil;
 import pw.gatchina.util.OkHttpClientWithKeys;
 
 import java.io.IOException;
 import java.util.Map;
 
 public class ApiCaller {
-    private final static Gson GSON = new GsonBuilder().setPrettyPrinting().create();
+    private final static Gson GSON = GsonUtil.get();
     private final static MediaType JSOM_MEDIA_TYPE = MediaType.get("application/json; charset=utf-8");
     private final OkHttpClient client;
 
     public ApiCaller(final @NotNull String rootCa, final @NotNull String privateKey, final @NotNull String privateCrt) {
-        this.client = OkHttpClientWithKeys.create(rootCa, privateKey, privateCrt);
+        client = OkHttpClientWithKeys.create(rootCa, privateKey, privateCrt);
     }
 
     public <T> T callSync(final @NotNull Class<T> type, final @NotNull String url) {
