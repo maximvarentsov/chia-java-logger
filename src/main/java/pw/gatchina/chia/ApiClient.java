@@ -19,16 +19,16 @@ public class ApiClient {
     public static GetWalletBalance getWalletBalance(final @NotNull String host, final int walledId) {
         final var url = host + "get_wallet_balance";
         final var params =  Map.of("wallet_id", walledId);
-        return new ApiCaller(ROOT_CA, WALLET_KEY, WALLET_CRT).call(GetWalletBalance.class, url, params);
+        return new ApiCaller(ROOT_CA, WALLET_KEY, WALLET_CRT).callSync(GetWalletBalance.class, url, params);
     }
 
     public static GetBlockchainState getBlockchainState(final @NotNull String host) {
         final var url = host + "get_blockchain_state";
-        return new ApiCaller(ROOT_CA, FULL_NODE_KEY, FULL_NODE_CRT).call(GetBlockchainState.class, url);
+        return new ApiCaller(ROOT_CA, FULL_NODE_KEY, FULL_NODE_CRT).callSync(GetBlockchainState.class, url);
     }
 
     public static GetPlots getPlots(final @NotNull String host) {
         final var url = host + "get_plots";
-        return new ApiCaller(ROOT_CA, HARVESTER_KEY, HARVESTER_CRT).call(GetPlots.class, url);
+        return new ApiCaller(ROOT_CA, HARVESTER_KEY, HARVESTER_CRT).callSync(GetPlots.class, url);
     }
 }

@@ -21,11 +21,11 @@ public class ApiCaller {
         this.client = OkHttpClientWithKeys.create(rootCa, privateKey, privateCrt);
     }
 
-    public <T> T call(final @NotNull Class<T> type, final @NotNull String url) {
-        return call(type, url, Map.of());
+    public <T> T callSync(final @NotNull Class<T> type, final @NotNull String url) {
+        return callSync(type, url, Map.of());
     }
 
-    public <T> T call(final @NotNull Class<T> type, final @NotNull String url, final @NotNull Map<?, ?> params) {
+    public <T> T callSync(final @NotNull Class<T> type, final @NotNull String url, final @NotNull Map<?, ?> params) {
         final var jsonParams = GSON.toJson(params);
         final var request = new Request.Builder()
                 .url(url)
