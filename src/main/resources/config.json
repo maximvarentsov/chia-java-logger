@@ -19,9 +19,18 @@
     "blockchain": "*/5 * * * *",
     "walletBalance": "0 * * * *",
     "plots": "*/30 * * * *",
-    "statistics": "*/15 * * * *"
+    "statistics": "*/15 * * * *",
+    "okex": "* * * * *"
   },
   "wallet": {
     "id": 1
+  },
+  "okex": {
+    "instruments": [ "XCH-USDT", "BTC-USDT", "ETC-USDT", "ETH-USDT", "TRX-USDT", "XRP-USDT", "DOGE-USDT", "BTT-USDT" ],
+    "instrument_type": "SWAP",
+    "endpoint": "https://www.okex.com/",
+    "apikey": "",
+    "secretkey": "",
+    "passphrase": ""
   }
 }

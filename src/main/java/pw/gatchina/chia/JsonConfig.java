@@ -8,6 +8,7 @@ public class JsonConfig {
     public Hosts hosts;
     public Cron cron;
     public Wallet wallet;
+    public Okex okex;
 
     public static class Mongo {
         public String connection;
@@ -24,9 +25,19 @@ public class JsonConfig {
         public String walletBalance;
         public String plots;
         public String statistics;
+        public String okex;
     }
 
     public static class Wallet {
         public int id;
+    }
+
+    public static class Okex {
+        public List<String> instruments = new ArrayList<>();
+        public String instrument_type;
+        public String endpoint;
+        public String apikey;
+        public String secretkey;
+        public String passphrase;
     }
 }
