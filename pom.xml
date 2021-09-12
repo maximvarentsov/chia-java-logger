@@ -49,7 +49,7 @@
                     </archive>
                 </configuration>
             </plugin>
-            <!-- https://maven.apache.org/plugins/maven-shade-plugin/ -->
+            <!-- http://maven.apache.org/plugins/maven-shade-plugin/ -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
@@ -59,6 +59,7 @@
                         <filter>
                             <artifact>*:*</artifact>
                             <excludes>
+                                <exclude>module-info.class</exclude>
                                 <exclude>META-INF/*</exclude>
                             </excludes>
                         </filter>
@@ -73,6 +74,14 @@
                         <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
                     </transformers>
                 </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
