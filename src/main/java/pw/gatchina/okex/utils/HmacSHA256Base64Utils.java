@@ -56,7 +56,7 @@ public class HmacSHA256Base64Utils {
     }
 
     /**
-     * the prehash string = timestamp + method + requestPath + body .<br/>
+     * the prehash string = timestamp + method + requestPath + body.
      *
      * @param timestamp   the number of seconds since Unix Epoch in UTC. Decimal values are allowed.
      *                    eg: 2018-03-08T10:59:25.789Z
