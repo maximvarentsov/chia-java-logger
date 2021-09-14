@@ -30,11 +30,11 @@ public class JsonConfig {
 
     public static class Wallet {
         public int id;
+        public String address;
     }
 
     public static class Okex {
         public List<String> instruments = new ArrayList<>();
-        public String instrument_type;
         public String endpoint;
         public String apikey;
         public String secretkey;

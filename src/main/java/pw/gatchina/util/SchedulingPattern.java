@@ -284,7 +284,7 @@ public class SchedulingPattern {
      * @throws Exception If the supplied pattern part is not valid.
      */
     private ValueMatcher buildValueMatcher(final @NotNull String str, final @NotNull ValueParser parser) throws Exception {
-        if (str.length() == 1 && str.equals("*")) {
+        if (str.equals("*")) {
             return new AlwaysTrueValueMatcher();
         }
         var values = new ArrayList<Integer>();

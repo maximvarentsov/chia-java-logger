@@ -21,7 +21,9 @@ public final class BigIntegerCodec implements Codec<BigInteger> {
     }
 
     @Override
-    public void encode(final @NotNull BsonWriter writer, final @NotNull BigInteger value, final @NotNull EncoderContext encoderContext) {
+    public void encode(final @NotNull BsonWriter writer,
+                       final @NotNull BigInteger value,
+                       final @NotNull EncoderContext encoderContext) {
         writer.writeDecimal128(new Decimal128(new BigDecimal(value)));
     }
 

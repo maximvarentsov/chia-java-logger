@@ -13,16 +13,16 @@ public class APIClient {
     private final Gson gson = new Gson();
 
     public APIClient(final @NotNull APIConfiguration config) {
-        var credentials = new APICredentials(config);
-        var client = new APIHttpClient(config, credentials).client();
+        final var credentials = new APICredentials(config);
+        final var client = new APIHttpClient(config, credentials).client();
         retrofit = new APIRetrofit(config, client).retrofit();
     }
 
-    public <T> T createService(final Class<T> service) {
+    public <T> T createService(final @NotNull Class<T> service) {
         return retrofit.create(service);
     }
 
-    public <T> T executeSync(final Call<T> call) {
+    public <T> T executeSync(final @NotNull Call<T> call) {
         try {
             final var response = call.execute();
 
