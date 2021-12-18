@@ -23,11 +23,11 @@
     "okex": "* * * * *"
   },
   "wallet": {
-    "id": 1
+    "id": 1,
+    "address": "xch14r5g3dd48lgl9kan4wzhmddu6649c5yzv746y06vl4sdtp6tttvqkhnvqq"
   },
   "okex": {
     "instruments": [ "XCH-USDT", "BTC-USDT", "ETC-USDT", "ETH-USDT", "TRX-USDT", "XRP-USDT", "DOGE-USDT", "BTT-USDT" ],
-    "instrument_type": "SWAP",
     "endpoint": "https://www.okex.com/",
     "apikey": "",
     "secretkey": "",
