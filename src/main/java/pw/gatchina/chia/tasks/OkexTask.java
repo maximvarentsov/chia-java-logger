@@ -51,14 +51,13 @@ public class OkexTask implements Runnable {
                 instrumentModel.instrument = instrument;
                 instrumentModel.type = type;
                 instrumentModel.value = data.markPx;
-
                 result.add(instrumentModel);
+            }
 
-                try {
-                    Thread.sleep(250L);
-                } catch (InterruptedException ex) {
-                    throw new RuntimeException(ex.getMessage(), ex);
-                }
+            try {
+                Thread.sleep(250L);
+            } catch (InterruptedException ex) {
+                throw new RuntimeException(ex.getMessage(), ex);
             }
 
             collection.insertMany(result);
