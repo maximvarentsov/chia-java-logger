@@ -1,6 +1,7 @@
-package pw.gatchina.okex;
+package pw.gatchina.chia.scripts;
 
 import pw.gatchina.chia.JsonConfig;
+import pw.gatchina.okex.APIConfiguration;
 import pw.gatchina.okex.service.Instruments;
 import pw.gatchina.okex.service.PublicDataAPIService;
 import pw.gatchina.util.ConfigHelper;
@@ -25,8 +26,8 @@ public class OkexMain {
 
         final var publicData = new PublicDataAPIService(apiConfiguration);
 
-        final var data = publicData.getMarkPrice(Instruments.SWAP, null, "XCH-USDT");
+        final var response = publicData.getMarkPrice(Instruments.SWAP, null, "XCH-USDT");
 
-        data.data.forEach(System.out::println);
+        response.data.forEach(System.out::println);
     }
 }
