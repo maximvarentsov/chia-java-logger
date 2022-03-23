@@ -1,4 +1,4 @@
-package pw.gatchina.chia.test;
+package pw.gatchina.chia.scripts;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,7 +8,6 @@ import pw.gatchina.util.Bytes;
 import pw.gatchina.util.ConfigHelper;
 import pw.gatchina.util.Utils;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -16,7 +15,7 @@ import java.util.HashSet;
 public class TestMain {
     private static final Logger logger = LoggerFactory.getLogger(TestMain.class);
 
-    public static void main(String... args) throws IOException  {
+    public static void main(String... args) throws Exception  {
         final var config = ConfigHelper.saveAndLoad("config.json", JsonConfig.class);
 /*
         var mongo = new MongoDatabaseManager(config.mongo.connection);
@@ -64,13 +63,11 @@ public class TestMain {
         logger.info("XCH per week: {}", chanceToWin * 7);
         logger.info("XCH per month: {}", chanceToWin * 30);
 
-
-        var plotSet = new HashSet<String>();
+        final var plotsSet = new HashSet<String>();
         for (final var plot : allPlots) {
-            if (plotSet.contains(plot.plotSeed)) {
+            if (!plotsSet.add(plot.plotSeed)) {
                 logger.info("duplicate plot " + plot.filename);
             }
-            plotSet.add(plot.plotSeed);
         }
     }
 }
