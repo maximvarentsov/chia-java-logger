@@ -34,7 +34,7 @@ public class Utils {
     *
     * https://github.com/Chia-Network/chia-blockchain/blob/9cc908678b1255c9a520c322302ba35084676e08/chia/cmds/units.py#L6
     */
-    public static double mojoToChia(long mojo) {
+    public static double mojoToChia(final long mojo) {
         return mojo / 1.0E12;
     }
 }
