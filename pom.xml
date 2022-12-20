@@ -18,7 +18,7 @@
         <log4j2.version>2.17.2</log4j2.version>
         <slf4j.version>1.7.36</slf4j.version>
         <gson.version>2.9.0</gson.version>
-        <mongodb-driver-sync.version>4.5.1</mongodb-driver-sync.version>
+        <mongodb-driver-sync.version>4.8.1</mongodb-driver-sync.version>
         <okhttp.version>4.9.1</okhttp.version>
         <retrofit2.version>2.9.0</retrofit2.version>
         <junit.version>4.13.2</junit.version>
